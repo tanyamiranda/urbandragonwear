@@ -1,0 +1,21 @@
+.footer-wrapper {
+    padding: 50px 0;
+}
+.footer {
+
+    font-size: small;
+    text-align: center;
+    line-height: 1.2em;
+    border-top: .5px solid silver;
+
+    .copyright {
+        font-weight: bold;
+        padding: 15px;
+    }
+
+    .extra-info {
+        font-style: italic;
+        padding: 15px;
+    }
+
+}

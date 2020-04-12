@@ -1,0 +1,23 @@
+.utilities {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.5px silver;
+    padding: 20px 20px;
+
+    .utility {
+        width: 300px;
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .details {
+            font-size: medium;
+            padding-bottom: 20px;
+        }
+
+    }
+}
