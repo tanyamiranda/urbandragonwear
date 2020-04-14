@@ -45,3 +45,34 @@
     
   }
 }
+
+@media screen and (max-width: 600px) {
+
+  .collection-item {
+
+    .collection-footer {
+      font-size: 16px;
+    }
+
+    .image {
+      height: 55%;
+    }
+
+    .custom-button {
+      display: block;
+      min-width: 100px;
+      padding: 0 10px;
+      opacity: 0.9;
+    }
+
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      .custom-button {
+        opacity: unset;
+      }
+    }
+  }
+
+}
