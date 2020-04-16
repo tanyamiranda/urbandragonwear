@@ -101,6 +101,16 @@ export const convertOrdersSnapshotToMap = (ordersSnapshot) => {
         }
     );
 
+    // This reducer is creating a map of the oredrs whose 
+    // keys are the orderids 
+    //return newCollection.reduce( 
+    //    (accumulator, order) => {
+    //        accumulator[order.id] = order;
+    //        return accumulator;
+    //    }, 
+    //    {} // 2nd parameter to reduce() func is an empty object
+    //);
+
     return newCollection;
 }
 

@@ -1,52 +1,77 @@
-.account-info {
+.account-info-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
     border-top: solid 0.5px silver;
     padding: 20px 20px;
 
-    .title {
-        font-size: 28px;
-        margin-bottom: 25px;
-        font-weight: normal;
-    }
+    .account-info {
 
-    .details {
-        display: inline-block;
-        justify-content: space-between;
-
-        .detail {
-            display: grid;
-            grid-template-columns: 100px 300px;
-            grid-gap: 10px;
-            justify-content: space-between;
-            margin: 10px 0;
-            padding-right: 20px;
-
-            .label {
-                font-weight: bold;
-            }
-            
+        .title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: normal;
         }
 
-    }
+        .details {
+            display: inline-block;
+            justify-content: space-between;
 
-    .buttons {
-        width: 350px;
-        display: flex;
-        justify-content: space-between;
-        padding-top: 20px;
+            .detail {
+                display: grid;
+                grid-template-columns: 100px 300px;
+                grid-gap: 10px;
+                justify-content: space-between;
+                margin: 10px 0;
+                padding-right: 20px;
+
+                .label {
+                    font-weight: bold;
+                }
+                
+            }
+
+        }
+
+        .buttons {
+            width: 350px;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 20px;
+        }
+
+        .order-history {
+            width: 300px;
+            padding-top: 10px;
+
+            .titles{
+                font-weight: bold;
+            }
+            .detail {
+                display: grid;
+                grid-template-columns: 30% 1fr 1fr 1fr;
+                grid-gap: 5px;
+                text-align: left;
+            }
+            .link {
+                cursor: pointer;
+                color: darkgreen    
+            }
+        }
     }
 }
 
 
 @media only screen and (max-width: 600px) {
-    .account-info {
-      padding: 10px 10px;
-      margin: auto;
+    .account-info-wrapper {
+        .account-info {
+            width: 100%;
+            padding: 10px 10px;
+            margin: auto;
 
-      .buttons {
-        width: 300px;
-      }
+            .buttons {
+                width: 300px;
+            }
+        }
     }
-  }
+}

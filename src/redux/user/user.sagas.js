@@ -126,6 +126,9 @@ export function* onSignInSuccessFetchOrders() {
     yield takeLatest(UserActionTypes.SIGN_IN_SUCCESS, fetchCurrentUserOrders)
 }
 
+//export function* onFetchCurrentUserOrdersStart() {
+//    yield takeLatest(UserActionTypes.FETCH_CURRENT_USER_ORDERS_START, fetchCurrentUserOrders)
+//}
 
 /*
 The userSagas is a list of sagas that is loaded upon initialization of the application. 
@@ -146,6 +149,7 @@ export function* userSagas() {
         call(onSignUpSuccess),
         call(onSignUpStart),
         call(onSignInSuccessFetchOrders)
+        //call(onFetchCurrentUserOrdersStart)
     ]);
 
 }
