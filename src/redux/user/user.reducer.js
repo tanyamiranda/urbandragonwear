@@ -2,6 +2,7 @@ import UserActionTypes from './user.types';
 
 const INITIAL_STATE = {
     currentUser: null,
+    orderHistory: [],
     error: null    
 }
 
@@ -18,6 +19,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
             return {
                 ...state,
                 currentUser: null,
+                orderHistory: [],
                 error: null
             }
         case UserActionTypes.SIGN_UP_SUCCESS: 
@@ -27,6 +29,13 @@ const userReducer = (state = INITIAL_STATE, action) => {
                 error: null
             }
         
+        case UserActionTypes.FETCH_CURRENT_USER_ORDERS_SUCCESS: 
+            return {
+                ...state,
+                orderHistory: action.payload
+            }
+
+        case UserActionTypes.FETCH_ORDERS_BY_EMAIL_FAILURE:
         case UserActionTypes.SIGN_IN_FAILURE:
         case UserActionTypes.SIGN_OUT_FAILURE:
         case UserActionTypes.SIGN_UP_FAILURE: 

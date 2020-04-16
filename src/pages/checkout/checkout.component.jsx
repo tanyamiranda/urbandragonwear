@@ -34,7 +34,7 @@ const CheckOutPage = ({cartItems, cartTotalCost}) => (
             <div className="total">Total: ${cartTotalCost}</div>
             {
                 !cartTotalCost ? null : (
-                    <StripeCheckoutButton price={cartTotalCost} />
+                    <StripeCheckoutButton price={cartTotalCost} cartItems={cartItems} />
                 )
             }
             <div className="test-warning">

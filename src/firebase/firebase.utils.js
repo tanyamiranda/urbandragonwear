@@ -56,6 +56,54 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
 }
 
+export const searchDataCollection = async(collectionName, searchFieldName, searchValue) => {
+    try {
+
+        const searchRef = firestore.collection(collectionName).where(searchFieldName, "==", searchValue);
+        const snapshot = await searchRef.get();
+        return snapshot;
+    }
+    catch (error) {
+        console.log("Error in searchDataCollection().", error);
+    }
+} 
+
+export const searchOrders = async (searchFieldName, searchValue) => {
+
+    try {
+        const snapshot = await searchDataCollection("orders", searchFieldName, searchValue);
+        const searchMap = await convertOrdersSnapshotToMap(snapshot);
+        return searchMap;
+    }
+    catch (error) {
+        console.log("Error in searchOrders().", error);
+    }
+
+}
+
+// Returns empty array if collection is empty
+export const convertOrdersSnapshotToMap = (ordersSnapshot) => {
+    const newCollection = ordersSnapshot.docs.map(
+        doc => {
+            const {createdDate, id, currency, email, phone, orderStatus, orderTotal, orderItems, shippingInfo, paymentInfo} = doc.data();
+            return  {
+                id,
+                createdDate, 
+                currency, 
+                email, 
+                phone, 
+                orderStatus, 
+                orderTotal, 
+                orderItems, 
+                shippingInfo, 
+                paymentInfo
+            };
+        }
+    );
+
+    return newCollection;
+}
+
 
 export const addCollectionAndDocuments = async (collectionKey, ObjectsToAdd) => {
 
@@ -112,5 +160,6 @@ export const getCurrentUser = () => {
         )}
     );
 }
+
 
 export default firebase;
