@@ -1,0 +1,48 @@
+.order-search-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-top: solid 0.5px silver;
+    padding: 20px 20px;
+
+    .order-search {
+        width: 500px;
+        margin: auto;
+
+        .search-form {
+            width: 300px;
+            margin: auto;
+        }
+
+        .title {
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        .no-orders {
+            padding: 20px 20px;
+            text-align: center;
+        }
+
+        .buttons {
+            margin: auto;
+            text-align: center;
+        }
+
+        .search-results {
+            border-top: .5px solid silver;
+            margin-top: 30px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .order-search-wrapper {
+        .order-search {
+            width: 100%;
+            padding: 0 0;
+        }
+    }
+}

@@ -56,27 +56,31 @@ export const createUserProfileDocument = async(userAuth, additionalData) => {
 
 }
 
-export const searchDataCollection = async(collectionName, searchFieldName, searchValue) => {
-    try {
+export const getOrdersByOrderIdAndEmail = async (orderId, email) => {
 
-        const searchRef = firestore.collection(collectionName).where(searchFieldName, "==", searchValue);
+    try {
+        const searchRef = firestore.collection("orders").where("id", "==", orderId).where("email", "==", email);
         const snapshot = await searchRef.get();
-        return snapshot;
-    }
-    catch (error) {
-        console.log("Error in searchDataCollection().", error);
-    }
-} 
-
-export const searchOrders = async (searchFieldName, searchValue) => {
-
-    try {
-        const snapshot = await searchDataCollection("orders", searchFieldName, searchValue);
         const searchMap = await convertOrdersSnapshotToMap(snapshot);
         return searchMap;
     }
     catch (error) {
-        console.log("Error in searchOrders().", error);
+        console.log("Error in getOrdersByOrderIdAndEmail().", error);
+    }
+
+}
+
+
+export const getRegisteredUserOrders = async (currentUser) => {
+
+    try {
+        const searchRef = firestore.collection("orders").where("email", "==", currentUser.email);
+        const snapshot = await searchRef.get();
+        const searchMap = await convertOrdersSnapshotToMap(snapshot);
+        return searchMap;
+    }
+    catch (error) {
+        console.log("Error in getRegisteredUserOrders().", error);
     }
 
 }

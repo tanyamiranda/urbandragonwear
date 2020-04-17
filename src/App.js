@@ -15,8 +15,9 @@ import CheckOutPage from './pages/checkout/checkout.component';
 import {selectCurrentUser} from './redux/user/user.selectors';
 import Footer from './components/footer/footer.component';
 import UtilitiesPage from './pages/utilities/utilities.component';
-import OrderDetailsPage from './pages/order-details/order-details-page.component';
 import {checkUserSession} from './redux/user/user.actions';
+import AccountOrderDetailsPage from './pages/account-order-details/account-order-details.component';
+import OrderSearch from './pages/order-search/order-search.component';
 
 const App = ({checkUserSession, currentUser}) => {
 
@@ -33,7 +34,8 @@ const App = ({checkUserSession, currentUser}) => {
         <Route path="/shop/" component={ShopPage} />
         <Route exact={true} path="/checkout/" component={CheckOutPage} />
         <Route exact={true} path="/utilities/" component={UtilitiesPage} />
-        <Route path="/orderdetails/:orderId" component={OrderDetailsPage} />
+        <Route path="/orderdetails/:orderId" component={AccountOrderDetailsPage} />
+        <Route exact={true} path="/ordersearch/" component={OrderSearch} />        
         
         {
         // If user is on SignUpSignInPage and is logged in, redirect to AccountInfoPage

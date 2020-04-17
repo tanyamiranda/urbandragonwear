@@ -1,7 +1,7 @@
 import {takeLatest, put, all, call} from 'redux-saga/effects';
 
 import UserActionTypes from './user.types';
-import {auth, googleProvider, createUserProfileDocument, getCurrentUser, searchOrders } from '../../firebase/firebase.utils';
+import {auth, googleProvider, createUserProfileDocument, getCurrentUser, getRegisteredUserOrders } from '../../firebase/firebase.utils';
 import {
     signInSuccess, 
     signInFailure, 
@@ -16,7 +16,7 @@ import {
 export function* fetchCurrentUserOrders() {
     try {
         const currentUser = yield getCurrentUser();
-        const orderMap = yield searchOrders("email", currentUser.email);
+        const orderMap = yield getRegisteredUserOrders(currentUser);
         yield put(fetchCurrentUserOrdersSuccess(orderMap));
     }
     catch (error) {
