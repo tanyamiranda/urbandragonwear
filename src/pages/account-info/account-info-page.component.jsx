@@ -8,7 +8,7 @@ import './account-info-page.styles.scss';
 import CustomButton from '../../components/custom-button/custom-button.component';
 import {selectCurrentUser, selectOrderHistory} from '../../redux/user/user.selectors';
 import {signOutStart} from '../../redux/user/user.actions';
-import {formatDisplayDate, formatDisplayDollarValue} from '../utilities/display-formatting';
+import {formatDisplayDate, formatDisplayDollarValue} from '../../components/formatting/display-formatting';
 
 const AccountInfoPage = ({currentUser, history, signOutStart, orderHistory}) => (
 

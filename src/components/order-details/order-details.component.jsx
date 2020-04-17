@@ -1,25 +1,12 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
-import {connect} from 'react-redux';
 
-import './order-details-page.styles.scss';
+import './order-details.styles.scss';
 
-import {selectOrderFromOrderHistory} from '../../redux/user/user.selectors'
-import {formatDisplayDate, formatDisplayDollarValue} from '../utilities/display-formatting';
+import {formatDisplayDate, formatDisplayDollarValue} from '../formatting/display-formatting';
 
-const OrderDetailsPage = ({order,match}) => {
-    
-    console.log("order=", order);
-    console.log("match=", match);
-    
-    return (
-        <div className="order-details-wrapper">
-            <h1 className="title">Order Details</h1>
-            {
-            !order || order === undefined ? (
-                <div>Order Not Found.</div>
-            ) : (
-                <div className="order-details">
+const OrderDetails = ({order}) => (
+
+    <div className="order-details">
                     <div className="top-section">
                         <div className="details">
                             <div className="detail">
@@ -91,14 +78,8 @@ const OrderDetailsPage = ({order,match}) => {
                     }
                     </div>
                 </div>
-                )
-            }   
-        </div>
-    );
-}
 
-const mapStateToProps = (state, ownProps) => ({
-    order: selectOrderFromOrderHistory(Number(ownProps.match.params.orderId))(state)
-})
 
-export default withRouter(connect(mapStateToProps)(OrderDetailsPage)); 
+);
+
+export default OrderDetails;
