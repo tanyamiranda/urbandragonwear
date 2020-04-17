@@ -13,7 +13,7 @@ const SAMPLE_ORDER = {
             paymentType: "visa",
             last4: "4242",
             billingAddress: {
-                name: "Tanya Miranda",
+                name: "John Smith",
                 line1: "99 Main Street",
                 line2: "Apt 2B",
                 city: "North Bergen",
@@ -24,7 +24,7 @@ const SAMPLE_ORDER = {
         shippingInfo: {
             shippingMethod: "UPS2DAY",
             shippingAddress: {
-                name: "Mrs. Miranda",
+                name: "Mary Smith",
                 line1: "100 Work Street",
                 line2: "5th Floor",
                 city: "New York",
