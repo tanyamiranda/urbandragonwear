@@ -32,7 +32,7 @@ const SAMPLE_ORDER = {
                 zip: "10010"	
             }
         },
-        ordertItems: [
+        orderItems: [
             {
                 id: 1,
                 name: "Brown Brim",
