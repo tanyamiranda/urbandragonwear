@@ -5,6 +5,13 @@
     border-top: solid 0.5px silver;
     padding: 20px 20px;
 
+    .title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        font-weight: normal;
+        text-align: center;
+    }
+
     .order-search {
         width: 300px;
         margin: auto;
@@ -13,28 +20,19 @@
             width: 100%;
             margin: auto;
         }
-
-        .title {
-            font-size: 28px;
-            margin-bottom: 25px;
-            font-weight: normal;
-            text-align: center;
-        }
-
-        .no-orders {
-            padding: 20px 20px;
-            text-align: center;
-        }
-
         .buttons {
             margin: auto;
             text-align: center;
         }
+    }
 
-        .search-results {
-            border-top: .5px solid silver;
-            margin-top: 30px;
-        }
+    .no-orders {
+        padding-top: 40px;
+        text-align: center;
+    }
+    .search-results {
+        border-top: .5px solid silver;
+        margin-top: 30px;
     }
 }
 

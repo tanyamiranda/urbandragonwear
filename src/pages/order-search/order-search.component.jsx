@@ -11,7 +11,7 @@ import OrderDetails from '../../components/order-details/order-details.component
 import {searchByOrderIdStart} from '../../redux/order/order.actions';
 import {selectOrderFromSearch} from '../../redux/order/order.selectors'
 
-const OrderSearchPage = ({order,searchByOrderIdStart, match}) => {
+const OrderSearchPage = ({order,searchByOrderIdStart}) => {
     
     const [searchCriteria, setSearchCriteria] = useState({orderId:"", email: ""});
     const [searchConducted, setSearchConducted] = useState(false);
@@ -55,19 +55,17 @@ const OrderSearchPage = ({order,searchByOrderIdStart, match}) => {
                         <CustomButton type="submit">Search</CustomButton>
                     </div>
                 </form>
-                
-                {
-                !order || order.length === 0 ? (
-                    <div className="no-orders">{!searchConducted ? null : "No order matches the required criteria."}</div>
-                ) : (
-                    <div className="search-results">
-                        <h1 className="title">Order Details</h1>
-                        <OrderDetails key={order[0].id} order={order[0]} /> 
-                    </div>
-                    )
-                }   
-                
             </div>
+            {
+            !order || order.length === 0 ? (
+                <div className="no-orders">{!searchConducted ? null : "No order matches the required criteria."}</div>
+            ) : (
+                <div className="search-results">
+                    <h1 className="title">Order Details</h1>
+                    <OrderDetails key={order[0].id} order={order[0]} /> 
+                </div>
+                )
+            }
         </div>
     );
 }

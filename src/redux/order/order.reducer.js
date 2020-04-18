@@ -1,7 +1,8 @@
 import OrderActionTypes from './order.types';
 
 const INITIAL_STATE = {
-    order: null,
+    searchOrder: null,
+    newOrder: null,
     error: null
 }
 
@@ -14,9 +15,19 @@ const orderReducer = (state = INITIAL_STATE, action) => {
         case OrderActionTypes.SEARCH_ORDER_BY_ID_SUCCESS: 
             return {
                 ...state,
-                order: action.payload,
+                searchOrder: action.payload,
+                newOrder: null,
                 error: null
             }
+        case OrderActionTypes.CREATE_ORDER_SUCCESS:
+            return {
+                ...state,
+                newOrder: action.payload,
+                searchOrder: null,
+                error: null
+            }
+
+        case OrderActionTypes.CREATE_ORDER_FAILURE: 
         case OrderActionTypes.SEARCH_ORDER_BY_ID_FAILURE: 
             return {
                 ...state,

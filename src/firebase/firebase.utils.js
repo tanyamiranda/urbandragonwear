@@ -70,7 +70,6 @@ export const getOrdersByOrderIdAndEmail = async (orderId, email) => {
 
 }
 
-
 export const getRegisteredUserOrders = async (currentUser) => {
 
     try {
@@ -121,18 +120,23 @@ export const convertOrdersSnapshotToMap = (ordersSnapshot) => {
 
 export const addCollectionAndDocuments = async (collectionKey, ObjectsToAdd) => {
 
-    const collectionRef = firestore.collection(collectionKey);
-    
-    const batch = firestore.batch();
+    try {
+        const collectionRef = firestore.collection(collectionKey);
+        
+        const batch = firestore.batch();
 
-    ObjectsToAdd.forEach( obj => {
+        ObjectsToAdd.forEach( obj => {
 
-        const newDocRef = collectionRef.doc();
-        batch.set(newDocRef, obj);
-    
-    });
+            const newDocRef = collectionRef.doc();
+            batch.set(newDocRef, obj);
+        
+        });
 
-    return await batch.commit();
+        return await batch.commit();
+    }
+    catch (error) {
+        console.log("Error in addCollectionAndDocuments().", error);
+    }
 
 }
 
