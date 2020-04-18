@@ -5,7 +5,7 @@ import {createStructuredSelector} from 'reselect';
 
 import './header.styles.scss';
 
-import {ReactComponent as DragonLogo} from '../../assets/dragonyinyang.svg';
+import {ReactComponent as DragonLogo} from '../../assets/logo.svg';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropDown from '../cart-dropdown/cart-dropdown.component';
 import {selectCurrentUser} from '../../redux/user/user.selectors';
@@ -18,13 +18,10 @@ const Header = ({currentUser, hidden, signOutStart}) => (
         <Link className="logo-container" to="/">
             <DragonLogo/>
         </Link>
-        <Link className="logo-name" to="/">
-            Urban Dragon Wear
-        </Link>
         
         <div className="options">
-
             <Link to="/shop" className="option">SHOP</Link>
+            <Link to="/ordersearch" className="option">ORDERS</Link>
             {
                 !currentUser ? null : (
                     <Link to="/account" className="option">ACCOUNT</Link>
@@ -38,7 +35,7 @@ const Header = ({currentUser, hidden, signOutStart}) => (
                 )
             }
 
-            <CartIcon />
+            <CartIcon/>
         </div>
         {
             hidden ?  null : (
