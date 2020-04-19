@@ -7,8 +7,12 @@ import CollectionItem from '../collection-item/collection-item.component';
 
 const CollectionFullView = ({collection}) => {
        
-    return (
+    console.log("collection=", collection);
 
+    if (!collection)
+        throw Error;
+
+    return (
         <div className="collection-view">
             <h1 className="title">{collection.title.toUpperCase()} COLLECTION</h1>
             <div className="preview">
@@ -20,9 +24,7 @@ const CollectionFullView = ({collection}) => {
                     )
                 }
             </div>
-
         </div>
-
     );
 }
 

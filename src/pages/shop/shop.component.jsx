@@ -1,14 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, lazy, Suspense} from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
 import './shop.styles.scss';
 
-import CollectionsOverviewContainer from '../collections/collections-overview.container';
-import CollectionFullViewContainer from '../collections/collection.container';
 import {selectIsCollectionsLoaded} from '../../redux/shop/shop.selectors';
 import {fetchCollectionsStart} from '../../redux/shop/shop.actions';
+import ErrorBoundary from '../../components/error-boundary/error-boundary.component';
+import Spinner from '../../components/spinner/spinner.component';
+
+const CollectionsOverviewContainer = lazy(() => import('../collections/collections-overview.container'));
+const CollectionFullViewContainer = lazy(() => import('../collections/collection.container'));
 
 const ShopPage = ({isCollectionsLoaded,fetchCollectionsStart, match }) => {
 
@@ -20,10 +23,15 @@ const ShopPage = ({isCollectionsLoaded,fetchCollectionsStart, match }) => {
     }, [fetchCollectionsStart,isCollectionsLoaded]);
 
     return (
-        <div className="shop-page">
-            <Route exact path ={`${match.path}`} component= {CollectionsOverviewContainer} />
-            <Route path={`${match.path}:collectionId`} component = {CollectionFullViewContainer} />
-        </div>
+        <ErrorBoundary>
+            <Suspense fallback={<Spinner />} >
+                <div className="shop-page">
+                    <Route exact path ={`${match.path}`} component= {CollectionsOverviewContainer} />
+                    <Route path={`${match.path}:collectionId`} component = {CollectionFullViewContainer} />
+                </div>
+            </Suspense>
+            
+        </ErrorBoundary>
     )
 }
 

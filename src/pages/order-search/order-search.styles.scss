@@ -13,11 +13,11 @@
     }
 
     .order-search {
-        width: 300px;
+        width: 100%;
         margin: auto;
 
         .search-form {
-            width: 100%;
+            width: 300px;
             margin: auto;
         }
         .buttons {
@@ -39,8 +39,10 @@
 @media only screen and (max-width: 350px) {
     .order-search-wrapper {
         .order-search {
-            width: 100%;
-            padding: 0 0;
+            .search-form {
+                width: 100%;
+                padding: 0 0;
+            }
         }
     }
 }

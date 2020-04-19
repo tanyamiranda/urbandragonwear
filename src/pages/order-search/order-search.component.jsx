@@ -11,7 +11,7 @@ import OrderDetails from '../../components/order-details/order-details.component
 import {searchByOrderIdStart} from '../../redux/order/order.actions';
 import {selectOrderFromSearch} from '../../redux/order/order.selectors'
 
-const OrderSearchPage = ({order,searchByOrderIdStart}) => {
+const OrderSearchPage = ({order,searchByOrderIdStart, match}) => {
     
     const [searchCriteria, setSearchCriteria] = useState({orderId:"", email: ""});
     const [searchConducted, setSearchConducted] = useState(false);
@@ -19,7 +19,8 @@ const OrderSearchPage = ({order,searchByOrderIdStart}) => {
     const {orderId, email} = searchCriteria;
 
     const handleSubmit = async event => {
-        event.preventDefault();    
+        
+        event.preventDefault();   
         setSearchConducted(true);
         searchByOrderIdStart(orderId, email);
     }
@@ -55,17 +56,23 @@ const OrderSearchPage = ({order,searchByOrderIdStart}) => {
                         <CustomButton type="submit">Search</CustomButton>
                     </div>
                 </form>
+                
+                {
+                    searchConducted ? 
+                            !order || order.length === 0 ? (
+                                <div className="no-orders">{!searchConducted ? null : "No order matches the required criteria."}</div>
+                            ) : (
+                                <div className="search-results">
+                                    <h1 className="title">Order Details</h1>
+                                    <OrderDetails key={order[0].id} order={order[0]} /> 
+                                </div>
+                            )
+                        
+                    : (
+                        <div></div>
+                    )
+                }    
             </div>
-            {
-            !order || order.length === 0 ? (
-                <div className="no-orders">{!searchConducted ? null : "No order matches the required criteria."}</div>
-            ) : (
-                <div className="search-results">
-                    <h1 className="title">Order Details</h1>
-                    <OrderDetails key={order[0].id} order={order[0]} /> 
-                </div>
-                )
-            }
         </div>
     );
 }
